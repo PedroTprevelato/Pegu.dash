@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  background-color: #0B0E12;
+  color: #F4F6F8;
+}
+
+::selection {
+  background-color: rgba(61, 139, 209, 0.35);
+}
+
+/* Scrollbar discreta */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #2B3340;
+  border-radius: 8px;
+  border: 2px solid #0B0E12;
+}
+
+@layer components {
+  .card {
+    @apply bg-base-800 border border-base-600/60 rounded-card shadow-soft;
+  }
+
+  /* Cartão hero — usado apenas para o dado mais importante da tela (Valor Disponível).
+     Sem borda uniforme, sem a mesma sombra dos demais cards: uma barra de cor lateral
+     comunica o estado (positivo/negativo) em vez de decoração. */
+  .card-hero {
+    @apply relative bg-base-800/70 rounded-[20px] overflow-hidden;
+  }
+
+  .num {
+    @apply font-display tabular-nums;
+  }
+
+  .tag {
+    @apply inline-flex items-center rounded-full bg-base-700/70 px-2.5 py-0.5 text-[11px] text-ink-300;
+  }
+
+  .input-field {
+    @apply w-full bg-base-900 border border-base-600 rounded-control px-3 py-2.5 text-sm text-ink-100 placeholder:text-ink-500 outline-none transition-colors focus:border-accent-500;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-control bg-accent-500 px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-accent-600 disabled:opacity-50 disabled:pointer-events-none;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-control border border-base-600 bg-base-800 px-4 py-2.5 text-sm font-medium text-ink-100 transition-colors hover:bg-base-700;
+  }
+
+  .btn-danger-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-control px-3 py-2 text-sm font-medium text-negative-400 transition-colors hover:bg-negative-500/10;
+  }
+
+  .label {
+    @apply text-sm text-ink-300 mb-1.5 block;
+  }
+}
