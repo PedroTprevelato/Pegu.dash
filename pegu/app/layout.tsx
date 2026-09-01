@@ -1,22 +1,38 @@
-import type { Metadata } from 'next';
-import { Inter, Space_Grotesk } from 'next/font/google';
-import './globals.css';
-import { ToastProvider } from '@/components/ui/toast';
-
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
-const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], variable: '--font-space-grotesk', weight: ['500', '600', '700'] });
+TypeScript
+import type { Metadata } from 'next'
+import Image from 'next/image'
 
 export const metadata: Metadata = {
-  title: 'PEGU — Gestão financeira, vendas e estoque',
-  description: 'Sistema de gestão financeira, vendas e estoque.',
-};
+  title: 'PEGU - Autenticação',
+  description: 'Acesse sua conta na PEGU',
+}
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function AuthLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
   return (
-    <html lang="pt-BR" className={`${inter.variable} ${spaceGrotesk.variable}`}>
-      <body className="font-sans antialiased bg-base-950 min-h-screen">
-        <ToastProvider>{children}</ToastProvider>
-      </body>
-    </html>
-  );
+    <div className="min-h-screen bg-[#101318] text-white flex flex-col items-center pt-16 p-4">
+      <div className="flex flex-col items-center mb-12 gap-3">
+        
+        {/* Ícone atualizado com a nova identidade visual */}
+        <div className="relative w-20 h-20 mb-2">
+          <Image 
+            src="/logo_pegu_3d.png" 
+            alt="Logo PEGU 3D"
+            fill
+            className="object-contain rounded-2xl"
+            priority
+          />
+        </div>
+
+        <h1 className="text-4xl font-bold tracking-tight text-white">PEGU</h1>
+        <p className="text-[#9ca3af] text-center max-w-sm">
+          Gestão financeira, vendas e estoque
+        </p>
+      </div>
+      <div className="w-full max-w-md">{children}</div>
+    </div>
+  )
 }
